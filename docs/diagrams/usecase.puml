@@ -1,0 +1,46 @@
+@startuml `Usecase
+
+left to right direction
+skinparam packageStyle rectangle
+
+
+
+actor "Actor(зритель)" as User
+actor "Actor(кассир)" as Cashier
+actor "Actor(администратор)" as Admin
+
+package "Система учета и продажи билетов" {
+  usecase "войти в систему" as UC_Login
+  usecase "купить билет" as UC_Buy
+  usecase "вернуть билет" as UC_Return
+  usecase "посмотреть расписание" as UC_Schedule
+  usecase "посмотреть свободные места" as UC_Seats
+  usecase "продать билет" as UC_Sell
+  usecase "управлять залами" as UC_Stock
+  usecase "управлять сеансами" as UC_Sessions
+  usecase "управлять фильмами" as UC_Films
+  usecase "экспортировать отчет" as UC_Export
+  usecase "сформировать отчет" as UC_Report
+}
+
+User --> UC_Login
+User --> UC_Buy
+User --> UC_Return
+User --> UC_Schedule
+User --> UC_Seats
+
+Cashier --> UC_Sell
+Cashier --> UC_Seats
+Cashier --> UC_Schedule
+Cashier --> UC_Login
+
+Admin --> UC_Stock
+Admin --> UC_Sessions
+Admin --> UC_Login
+Admin --> UC_Films
+Admin --> UC_Export
+
+UC_Buy ..> UC_Seats : Include
+UC_Export ..> UC_Report : Include
+
+@enduml
