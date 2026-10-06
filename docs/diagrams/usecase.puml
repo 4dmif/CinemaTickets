@@ -1,13 +1,10 @@
-@startuml `Usecase
-
+@startuml
 left to right direction
 skinparam packageStyle rectangle
 
-
-
-actor "Actor(зритель)" as User
-actor "Actor(кассир)" as Cashier
-actor "Actor(администратор)" as Admin
+actor "Актор(зритель)" as User
+actor "Актор(кассир)" as Cashier
+actor "Актор(администратор)" as Admin
 
 package "Система учета и продажи билетов" {
   usecase "войти в систему" as UC_Login
@@ -29,14 +26,15 @@ User --> UC_Return
 User --> UC_Schedule
 User --> UC_Seats
 
-Cashier --> UC_Sell
-Cashier --> UC_Seats
-Cashier --> UC_Schedule
 Cashier --> UC_Login
+Cashier --> UC_Sell
+Cashier --> UC_Return
+Cashier --> UC_Schedule
+Cashier --> UC_Seats
 
+Admin --> UC_Login
 Admin --> UC_Stock
 Admin --> UC_Sessions
-Admin --> UC_Login
 Admin --> UC_Films
 Admin --> UC_Export
 
