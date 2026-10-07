@@ -20,23 +20,23 @@ package "Система учета и продажи билетов" {
   usecase "сформировать отчет" as UC_Report
 }
 
-User --> UC_Login
-User --> UC_Buy
-User --> UC_Return
-User --> UC_Schedule
-User --> UC_Seats
+User -- UC_Login
+User -- UC_Buy
+User -- UC_Return
+User -- UC_Schedule
+User -- UC_Seats
 
-Cashier --> UC_Login
-Cashier --> UC_Sell
-Cashier --> UC_Return
-Cashier --> UC_Schedule
-Cashier --> UC_Seats
+Cashier -- UC_Login
+Cashier -- UC_Sell
+Cashier -- UC_Return
+Cashier -- UC_Schedule
+Cashier -- UC_Seats
 
-Admin --> UC_Login
-Admin --> UC_Stock
-Admin --> UC_Sessions
-Admin --> UC_Films
-Admin --> UC_Export
+Admin -- UC_Login
+Admin -- UC_Stock
+Admin -- UC_Sessions
+Admin -- UC_Films
+Admin -- UC_Export
 
 UC_Buy ..> UC_Seats : Include
 UC_Export ..> UC_Report : Include
