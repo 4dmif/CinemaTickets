@@ -8,6 +8,8 @@ actor "Актор(кассир)" as Cashier
 actor "Актор(администратор)" as Admin
 
 package "Система учета и продажи билетов" {
+  usecase "войти в систему" as UC_Login2
+  usecase "войти в систему" as UC_Login1
   usecase "войти в систему" as UC_Login
   usecase "купить билет" as UC_Buy
   usecase "вернуть билет" as UC_Return
@@ -22,22 +24,22 @@ package "Система учета и продажи билетов" {
 }
 
 User -- UC_Login
-User -- UC_Buy
-User -- UC_Return
-User -- UC_Schedule
-User -- UC_Seats
+UC_Login -- UC_Buy
+UC_Login -- UC_Return
+UC_Login -- UC_Schedule
+UC_Login -- UC_Seats
 
-Cashier -- UC_Login
-Cashier -- UC_Sell
-Cashier -- UC_Return
-Cashier -- UC_Schedule
-Cashier -- UC_Seats
+Cashier -- UC_Login1
+UC_Login1 -- UC_Sell
+UC_Login1 -- UC_Return
+UC_Login1 -- UC_Schedule
+UC_Login1 -- UC_Seats
 
-Admin -- UC_Login
-Admin -- UC_Stock
-Admin -- UC_Sessions
-Admin -- UC_Films
-Admin -- UC_Export
+Admin -- UC_Login2
+UC_Login2 -- UC_Stock
+UC_Login2 -- UC_Sessions
+UC_Login2 -- UC_Films
+UC_Login2 -- UC_Export
 
 UC_Buy ..> UC_Seats : Include
 UC_Export ..> UC_Report : Include
