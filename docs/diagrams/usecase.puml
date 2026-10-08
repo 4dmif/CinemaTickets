@@ -16,7 +16,7 @@ package "Система учета и продажи билетов" {
   usecase "посмотреть расписание" as UC_Schedule
   usecase "посмотреть свободные места" as UC_Seats
   usecase "продать билет" as UC_Sell
-  usecase "управлять залами" as UC_Stock
+  usecase "управлять залом" as UC_Stock
   usecase "управлять сеансами" as UC_Sessions
   usecase "управлять фильмами" as UC_Films
   usecase "экспортировать отчет" as UC_Export
@@ -24,14 +24,12 @@ package "Система учета и продажи билетов" {
 }
 
 User -- UC_Login
-UC_Login -- UC_Buy
 UC_Login -- UC_Return
 UC_Login -- UC_Schedule
 UC_Login -- UC_Seats
 
 Cashier -- UC_Login1
 UC_Login1 -- UC_Sell
-UC_Login1 -- UC_Return
 UC_Login1 -- UC_Schedule
 UC_Login1 -- UC_Seats
 
@@ -39,9 +37,9 @@ Admin -- UC_Login2
 UC_Login2 -- UC_Stock
 UC_Login2 -- UC_Sessions
 UC_Login2 -- UC_Films
-UC_Login2 -- UC_Export
+UC_Login2 -- UC_Report
 
-UC_Buy ..> UC_Seats : Include
-UC_Export ..> UC_Report : Include
+UC_Seats ..> UC_Buy : Include
+UC_Report ..> UC_Export : Include
 
 @enduml
